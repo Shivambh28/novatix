@@ -1,0 +1,213 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Novatix</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1">
+  
+  <link href="assets/img/appicon.png" rel="apple-touch-icon" />
+  <link href="assets/img/appicon.png" rel="apple-touch-icon" sizes="76x76" />
+  <link href="assets/img/appicon.png" rel="apple-touch-icon" sizes="120x120" />
+  <link href="assets/img/appicon.png" rel="apple-touch-icon" sizes="152x152" />
+  <link href="assets/img/appicon.png" rel="apple-touch-icon" sizes="180x180" />
+  <link href="assets/img/appicon.png" rel="icon" sizes="192x192" />
+  <link href="assets/img/appicon.png" rel="icon" sizes="128x128" /> 
+  
+  <link rel="stylesheet" href="assets/css/main.css">
+  
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+  
+<body>
+  
+  <div id="main-container">
+    
+    
+    <div id="preloader">
+      <div id="preloader_logo"></div>
+
+      <div class="cube-wrapper">
+        <div class="cube-folding">
+          <span class="leaf1"></span>
+          <span class="leaf2"></span>
+          <span class="leaf3"></span>
+          <span class="leaf4"></span>
+        </div>
+      </div>
+
+    </div><!-- end preloader -->
+    <header>
+      <img class="logo" src="./assets/img/novatix_logo.svg" />
+      
+      <form action="">
+        <div class="searchbox">
+          <input type="text" placeholder="Enter Name or Venue" class="search-box" id="search-box">
+          
+        </div>
+      
+        <input type="submit" value="" id="search-btn">
+      </form>
+
+      <div class="back" id="back_btn"></div>
+      <div class="clear hidden"></div>
+      <div class="cancel hidden">CANCEL</div>
+    </header>
+    
+    <div id="main">
+
+      <div class="page" id="home">
+        <div class="swiper-container">
+              <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="text">The Weeknd</div>
+                    <img src="assets/img/homeslider/slide_01.jpg" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="text">Beyonce</div>
+                    <img src="assets/img/homeslider/slide_02.jpg" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="text">Ed Sheeran</div>
+                    <img src="assets/img/homeslider/slide_03.jpg" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="text">Ariana Grande</div>
+                    <img src="assets/img/homeslider/slide_04.jpg" alt="">
+                  </div>
+              </div>
+              <!-- Add Pagination -->
+              <div class="swiper-pagination"></div>
+          </div><!-- swiper container -->
+
+          <div id="module-home_today">
+          <div class="row headline">
+              <h1>Happening Today</h1>
+
+              <div id="module-location">
+                <i class="location"></i>
+                <div class="city">Los Angeles, CA</div><!-- end city -->
+              </div><!-- end module-location -->
+            </div><!-- end row -->
+          
+          <div class="results">
+              <script id="today_events-template" type="text/x-handlebars-template">
+                {{#each this}}
+                  <div class="row post" data-id="{{ id }}">
+                    <div class="row featured_image">
+                      <img src="assets/img/posts/{{ featured_image }}" alt="">
+                    </div>
+                    
+                    <div class="row copy">
+                      <div class="date left">
+                        <h2>{{ day }}</h2>
+                        <h3>{{ date }}</h3>
+                      </div>
+                      <div class="right desc">
+                        <h4>{{ title }}</h4>
+                        <p>{{ time }} - {{ location }}</p>
+                      </div>
+                    </div>
+                  </div><!-- end post -->
+              {{/each}}
+            </script>
+          </div>
+
+          </div><!-- end module-home_today -->
+      </div><!-- page -->
+
+      <div class="page" id="listing">
+        <div class="result"></div>
+        <script id="listing-template" type="text/x-handlebars-template">
+          <div class="container listing" >
+            <div class="head_content">
+              <img src="assets/img/posts/{{ featured_image }}" alt="Featured Image">
+              <div class="tickets_left">{{ tickets_left }} <br> LEFT</div>
+            </div><!-- end featured_image -->
+
+            <div class="body_content">
+              <div class="title">
+                <!-- <i class="arrow"></i> -->
+                <p class="date">{{ day }}, {{ date }}</p>
+                <div class="title_text">
+                  <h3>{{title}}</h3>
+                </div>
+                <a href="#" id="whos_going"><i class="triangle"></i>{{ tickets_left }} GOING</a>
+              </div><!-- end buy tickets -->
+
+              <div class="details">
+                <p>
+                  {{{ description }}}
+                </p>
+              </div><!-- end details -->
+            </div><!-- end buy tickets -->
+            
+            <button id="buynow" class="button">BUY TICKETS</button>
+            
+          </div><!-- end listing container -->
+
+          <div class="container checkout">
+            <div class="head_content"></div><!-- end color -->
+            <div class="button white">buy tickets</div>
+
+            <div class="body_content" id="ticket_counter">
+              
+              <div class="plus">+</div>
+              <div class="counter">0</div>
+              <div class="minus">-</div>
+
+            </div><!-- end buy tickets -->
+
+            <button id="checkout_btn" class="button">CHECKOUT</button>
+            
+          </div><!-- end checkout container -->     
+        </script>
+      </div>
+
+      <div class="popup" id="unavaliable">
+        <p>We are sorry but this feature is not currently avaliable.</p>
+      </div>
+
+    </div><!-- Main  -->
+  
+    <div id="app"></div>
+    
+    
+    <div id="search">
+      <div class="recommended">RECOMMENDED EVENTS</div>
+
+      <div class="results" id="search_results">
+        <script id="result-template" type="text/x-handlebars-template">
+            {{#each events}}
+            <div class="result" data-id="{{ id }}">
+            <div class="left image">
+              <img src="assets/img/results/{{ search_img }}" alt="">
+            </div>
+            <div class="copy left">
+              <span class="title">{{ title }}</span>
+              <span class="desc">{{ location }}</span>
+              <span class="date right">{{ date}}</span>
+            </div>
+          </div><!-- end result -->
+          {{/each}}
+        </script>
+
+      </div>
+    </div>
+
+  </div><!-- #main-container -->
+  
+  <script src="assets/js/client.min.js"></script>
+  <script src="assets/js/old/libs/jquery.js"></script>
+  <script src="assets/js/old/libs/tweenmax.js"></script>
+  <script src="assets/js/old/libs/handlebars-v4.0.5.js"></script>
+  <script src="assets/js/old/libs/swiper.js"></script>
+  <script src="assets/js/old/main.js"></script>
+</body>
+</html>

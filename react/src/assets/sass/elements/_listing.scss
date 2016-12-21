@@ -1,0 +1,241 @@
+#listing {
+    height: 86%;
+    overflow-y: scroll;
+    padding-bottom: 0;
+    left: 100%;
+    // -webkit-overflow-scrolling: touch;
+    .head_content {
+		width: 100%;
+		overflow: hidden;
+		line-height: 0;
+		position: relative;
+		height: 36%;
+	}
+	.body_content {
+	    opacity: 1;
+	    width: 100%;
+	    overflow: hidden;
+	    line-height: 0;
+	    position: relative;
+	    height: 60%;
+	}
+    .button {
+	    bottom: 11%;
+	    position: fixed;
+		width: 90%;
+		background: #f1c40f;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 4vw;
+		font-weight: bold;
+		padding: 4% 0;
+		left: 100%;
+		border: 0;
+		border-radius: 5px;
+	}
+    .container {
+    	width: 100%;
+	    position: absolute;
+	    overflow-y: scroll;
+	    // -webkit-overflow-scrolling: touch;
+    }
+    .listing {
+		.head_content {
+			img {
+				min-height: 179px;
+				display: block;
+				background: $blue;
+				text-align: center;
+				line-height: 33vw;
+				color: #fff;
+				font-style: b;
+				font-weight: 100;
+			}
+			.tickets_left {
+				width: 20%;
+	    		padding-top: 6.5%;
+			    background: url(../img/icons/diamond.png) no-repeat;
+			    position: absolute;
+			    right: 5%;
+			    bottom: 8%;
+			    background-size: 100% auto;
+			    font-size: 3.5vw;
+			    color: #a23049;
+			    text-align: center;
+			    line-height: 3.5vw;
+			    padding-bottom: 7%;
+			}
+		}
+		.content {
+			background: #fff;
+		    opacity: 1;
+		    width: 100%;
+		    overflow: hidden;
+		    line-height: 0;
+		    position: relative;
+		    height: 40%;
+		}
+		.title {
+			width: 100%;
+		    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ad3d55+0,9c2a42+100 */
+			background: rgb(173,61,85); /* Old browsers */
+			background: -moz-linear-gradient(top,  rgba(173,61,85,1) 0%, rgba(156,42,66,1) 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top,  rgba(173,61,85,1) 0%,rgba(156,42,66,1) 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom,  rgba(173,61,85,1) 0%,rgba(156,42,66,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ad3d55', endColorstr='#9c2a42',GradientType=0 ); /* IE6-9 */
+
+		    padding: 8% 5% 6%;
+		    position: relative;
+		    height: auto;
+		    overflow: hidden;
+		    float: left;
+		    display: block;
+		    .arrow {
+		    	width: 10%;
+		    	padding-bottom: 10%;
+		    	background: url(../img/icons/triangle_pink.svg) no-repeat;
+		    	position: absolute;
+		    	right: 0;
+		    	top: -10%;
+		    }
+			.date {
+				color: #00030d;
+				font-size: 4vw;
+				display: block;
+				float: left;
+				clear: both;
+				width: 100%;
+				line-height: 1vw;
+				margin-bottom: 4vw;
+			}
+			.title_text {
+			    width: 100%;
+			    display: block;
+			    float: left;
+			    clear: both;
+			}
+			h3 {
+				color: #fff;
+				font-size: 9vw;
+				float: left;
+				width: 70%;
+				line-height: 9vw;
+			}
+			#whos_going {
+				background: #000;
+				color: #fff;
+				font-size: 3vw;
+				right: 0;
+				bottom: 28%;
+				padding: 4% 9%;
+				position: absolute;
+				text-decoration: none;
+				cursor: pointer;
+			    .triangle {
+				    width: 29%;
+				    height: 100%;
+				    background: url(../img/icons/triangle.svg) no-repeat;
+				    background-size: 100% auto;
+				    position: absolute;
+				    left: -21%;
+				    top: 0;
+				    transform: rotate(-90deg);
+			    }
+			}
+		}
+
+		.details {
+			overflow: hidden;
+		    width: 100%;
+		    padding: 5%;
+		    height: 60%;
+		    p {
+		    	font-size: 4vw;
+    			color: #333;
+			    line-height: 4vw;
+			    margin-bottom: 10px;
+		    }
+		}
+	}
+
+	.checkout {
+		position: fixed;
+	    top: 100%;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+		.btn_area {
+		}
+
+		.button.white {
+			border: 2px solid #fff;
+		    border-radius: 5px;
+		    color: #fff;
+		    width: 60%;
+		    position: absolute;
+		    top: 23%;
+		    left: 20%;
+		    font-size: 4vw;
+		    text-transform: uppercase;
+		    background: none;
+		    opacity: 1;
+		    text-align: center;
+		    padding: 3% 0 8%;
+		    height: 0;
+		    opacity: 0;
+		}
+	
+		.head_content {
+			background: $blue;
+			opacity: 0.5;
+			top: 36%;
+		}
+
+		.body_content {
+		    background: #fff;
+		}
+		
+		#checkout_btn {
+			background: #fff;
+			border: 2px solid $blue;
+			border-radius: 5px;
+			color:$blue;
+			left: 5%;
+			display: none;
+		}
+
+		#ticket_counter {
+			.plus {
+				color: #1d7cae;
+			    font-size: 14vw;
+			    position: absolute;
+			    top: 42%;
+			    right: 6%;
+			}
+			.counter {
+			    background: url(../img/icons/ticket.png) no-repeat;
+			    background-size: 100% auto;
+			    width: 50%;
+			    padding-bottom: 33%;
+			    position: absolute;
+			    top: 27%;
+			    left: 26%;
+			    color: #fff;
+			    text-align: center;
+			    font-size: 25vw;
+			    line-height: 29vw;
+			}
+
+			.minus {
+				color: #1d7cae;
+			    font-size: 18vw;
+			    position: absolute;
+			    top: 42%;
+			    left: 6%;
+			}
+		}
+	}
+	
+	
+	
+}

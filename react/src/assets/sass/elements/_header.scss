@@ -1,0 +1,171 @@
+// .logo {
+// 	background-size: 100% auto;
+// 	position: absolute;
+// 	width: 50%;
+// 	padding-bottom: 10%;
+// }
+
+header {
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #000;
+    overflow: hidden;
+    z-index: 100;
+
+	.logo {
+		width: 28%;
+	    height: 210%;
+	    top: -58%;
+	    left: 35%;
+	    position: absolute;
+	}
+
+	#search-btn {
+		background-image: url(../img/icons/search-white.svg);
+	    background-size: 100% auto;
+	    position: absolute;
+	    border: 0;	
+	    width: 20px;
+	    right: 5%;
+	    top: 34%;
+	    background-color: transparent;
+	    border: 0;
+	    height: 20px;
+	}
+
+	.searchbox input {
+		position: absolute;
+	    top: 30%;
+	    left: 14%;
+	    width: 50%;
+	    height: 20px;
+	    font-size: 18px;
+	    color: #fff;
+	    background-color: #000;
+	    border: 0;
+	    text-decoration: blink;
+	    width: 0;
+	    font-weight: 100;
+	    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		  	color: #fff;
+			// padding-bottom: 5px;
+		 //  	border-bottom: 5px solid #fff
+		}
+		&::-moz-placeholder { /* Firefox 19+ */
+		  	color: #fff;
+			// padding-bottom: 5px;
+		 //  	border-bottom: 5px solid #fff
+		}
+		&:-ms-input-placeholder { /* IE 10+ */
+		  	color: #fff;
+			// padding-bottom: 5px;
+		 //  	border-bottom: 5px solid #fff
+		}
+		&:-moz-placeholder { /* Firefox 18- */
+		  	color: #fff;
+			// padding-bottom: 5px;
+		 //  	border-bottom: 5px solid #fff
+		}
+	}
+
+	.blinking {
+		display: block;
+		width: 1px;
+		height: 20px;
+		position: absolute;
+		top: 30%;
+		left: 14%;
+		background: #fff;
+		content: '';
+		display: none;
+		-webkit-animation: 1s blink step-end infinite;
+		-moz-animation: 1s blink step-end infinite;
+		-ms-animation: 1s blink step-end infinite;
+		-o-animation: 1s blink step-end infinite;
+		animation: 1s blink step-end infinite;
+	}
+
+	.clear {
+	    background-image: url(../img/icons/cancel.svg);
+	    background-size: 100% auto;
+	    position: absolute;
+	    width: 3.5%;
+	    padding-bottom: 3.5%;
+	    right: 21.7%;
+	    top: 38.9%;
+	    background-color: transparent;
+	    border: 0;
+	}
+
+	.back {
+		background-image: url(../img/icons/back.svg);
+	    background-size: 100% auto;
+	    position: absolute;
+	    width: 5%;
+	    padding-bottom: 5%;
+	    left: -20%;
+	    display: none;
+	    top: 30% ;
+	    background-color: transparent;
+	    border: 0;
+	}
+
+	.cancel {
+	    right: 5%;
+	    top: 32%;
+	    color: #fff;
+	    font-size: 12px;
+	    position: absolute;
+	    border-left: 2px solid #fff;
+	    padding: 3px 0 3px 10px;
+	}
+
+}
+
+@keyframes "blink" {
+  from, to {
+	background: transparent;
+  }
+  50% {
+    background: #fff;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    background: transparent;
+  }
+  50% {
+    background: #fff;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    background: transparent;
+  }
+  50% {
+    background: #fff;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    background: transparent;
+  }
+  50% {
+    background: #fff;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+  	background: transparent;
+  }
+  50% {
+    background: #fff;
+  }
+}
