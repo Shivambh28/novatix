@@ -5,7 +5,7 @@
 
 	/**
  	 * App
- 	 * @ Requires Modules
+ 	 * @ Requires Modules { Ticketer, JSON, listing, Preloader }
  	 */
  	function App()
  	{
@@ -94,7 +94,7 @@
 
  	/**
  	 * Preloader
- 	 * @ Requires Modules
+ 	 * 
  	 */
  	function Preloader(_$preloader) {
 		var $preloader = $("#preloader");
@@ -172,8 +172,6 @@
 			var percent = preloaded / allImages.length;
 			percent = Math.round(percent * 100);
 
-			// $preloader.find('.txt span').text(percent);
-
 			if(percent >= 100) {
 				siteLoaded = true;
 				TM.to($preloader, 0.5, {opacity: 0, display: "none", delay: 1, onComplete: _cb });
@@ -204,7 +202,7 @@
 
 	/**
 	 * Home Module
-	 * @dependency TodayModule, App;
+	 * @ Requires { TodayModule, App };
 	 */
  	var Home = function() 
  	{	
@@ -241,7 +239,7 @@
 
 	/**
 	 * Search Module
-	 * @ Extends Data
+	 * @ Requires { App }
 	 */
 	var Search = function() 
 	{
@@ -466,7 +464,7 @@
 
 	/**
 	 * Today Module
-	 *
+	 *@ Requires { App }
 	 */
  	var TodayModule = function(_container) 
  	{
@@ -619,6 +617,7 @@
 		this.$container = $('#listing');
 		this.$result    = this.$container.find('.result');
  		this.$template  = $("#listing-template");
+ 		that.$buyNow 	= this.$container.find('#buynow');
  		this.ticketer 	= null;
 
  		// Make Source
@@ -631,8 +630,8 @@
 			this.$result.append(template(data));
 			
 			TM.to($home, 0.5, { left: '-=100%' });
-			TM.to($('#buynow'), 0.5, {left : '-=95%'} );
-			TM.to(this.$container, 0.5, { left: '-=100%'});
+			TM.to(that.$buyNow, 0.5, {left : '-=95%'} );
+			TM.to(that.$container, 0.5, { left: '-=100%'});
 
 			// Back Logo to the Left
 			app.showBackBtn();
@@ -647,7 +646,7 @@
 
 		this.slideOut = function() {
 			TM.to($home, 0.5, { left: '+=100%' });
-			TM.to($('#buynow'), 0.5, {left : '+=95%'} );
+			TM.to(that.$buyNow, 0.5, {left : '+=95%'} );
 			
 			app.hideBackBtn();
 			
@@ -673,7 +672,7 @@
 			TM.set($home, { left : '-100%' });
 			TM.set(this.$container, { left: 0 });
 
-			TM.set($('#buynow'), { 'left' : '5%' });
+			TM.set(that.$buyNow, { 'left' : '5%' });
 
 			this.bindEvents();
 
@@ -686,7 +685,7 @@
 			this.unbindEvents();
 
 			TM.set($home, { left: 0 });
-			TM.set($('#buynow'), { 'left' : '100%' });
+			TM.set(that.$buyNow, { 'left' : '100%' });
 			TM.set(this.$container, { left: '100%' });
 
 			// Back Logo to the Left
@@ -695,17 +694,13 @@
 			if(this.ticketer != null) this.ticketer = null;
 	 	};
 
-	 	this.initElements = function() {
-	 		this.$buynow = this.$container.find('#buynow');
-	 	}
-
 	 	this.bindEvents = function() {
-			$('#buynow').on('click', that.showCheckOut);
-	 	}
+			that.$buyNow.on('click', that.showCheckOut);
+	 	};
 
 	 	this.unbindEvents = function() {
-			$('#buynow').off('click', that.showCheckOut);
-	 	}
+			that.$buyNow.off('click', that.showCheckOut);
+	 	};
 
 	 	this.showCheckOut = function() {
 	 		this.ticketer = new Ticketer();
@@ -714,9 +709,10 @@
  	}
 
  	/**
-	 * Init Modules
+	 * Init App
 	 *
 	 */
 	var novatix = new App();
 	novatix.init();
+
 })(jQuery);
