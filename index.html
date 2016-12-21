@@ -224,5 +224,33 @@
 	<script src="assets/js/libs/handlebars-v4.0.5.js"></script>
 	<script src="assets/js/libs/swiper.js"></script>
 	<script src="assets/js/main.js"></script>
+
+	<script>
+    	(function() {
+	    		var checkForMobile = function() {
+	    		var isTouchDevice = function() {  return 'ontouchstart' in window || 'onmsgesturechange' in window; };
+	    		var isDesktop = window.screenX != 0 && !isTouchDevice() ? true : false;
+	    		
+	    		if(isDesktop) {
+		    		$('#main-container').hide();
+		    		var $div = $('<div />', {
+		    			id: 'desktop-error'
+		    		}).html('<h1>Please View On Your Phone For The Full Experience</h1>');
+		    		$div.css({
+		    			textAlign: 'center',
+		 				position: 'absolute',
+		 				left: '50%',
+		 				top: '50%',
+		 				transform: 'translate(-50%, -50%)',
+		 				fontSize: 16,
+		 				width: '100%'
+		    		});
+		    		$div.appendTo($('body'));
+		    	}
+	    	}
+
+	    	checkForMobile();
+	    })();
+	</script>
 </body>
 </html>
