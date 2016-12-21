@@ -11,58 +11,69 @@
  	{
  		var that = this;
 
- 		Ticketer.apply(this, arguments);
+ 		// Extend Ticketer Module
+ 		Ticketer.apply(this, arguments); 
 
- 		this.$footer 	  = $('footer');
-		this.$unavaliable = $('#unavaliable');
-		that.unavaliableVisible = false;
-
- 		this.pages = {
+ 		// Global Elements
+ 		this.$footer 	  		= $('footer');
+		this.$unavaliable 		= $('#unavaliable');
+		this.unavaliableVisible = false;
+		this.$backBtn 			= $('#back_btn');
+		this.pages 				= {
  			$home 	 : $('#home'),
  			$listing : $('#listing'),
  			$search  : $('#search')
  		};
 
- 		this.JSON    = new JSON();
- 		this.listing = new Listing(this);
+ 		// Extends JSON and Listing Modules
+ 		this.JSON    			= new JSON();
+ 		this.listing 			= new Listing(this);
 
- 		this.onPage = 0;
+ 		// Initialization of App
+ 		this.init = function() 
+	 	{	
+	 		// Start preloader
+			var preloader = new Preloader();
+			preloader.onComplete(function() {
+				TM.to($('#main'), 0.5, { opacity: 1 });
+			});	
 
- 		this.$backBtn = $('#back_btn');
+			// On Complete
+			// Initialize Modules
+			that.search = new Search();
+		 	that.search.init();
 
+		 	that.home = new Home();
+		 	that.home.init();
+		 	
+		 	that.bindFooterLinks();
+		};
+
+		// Displays Back Button
  		this.showBackBtn = function() {
  			TM.to(that.$backBtn, 0.5, { left: '	=24%','display' : 'block' });
  		};
 
+ 		// Hides Back Button
  		this.hideBackBtn = function() {
  			if (that.$backBtn.css('display') != 'none') {
  				TM.to(that.$backBtn, 0.5, { left: '-=24%', 'display' : 'none' });
  			}
  		};
 
- 		$(window).on('hashChange', this.detectPage);
-
- 		this.hashMatch = function(value, cb) {
- 			var matches = (window.location.href.indexOf(value) > -1);
- 			if (matches) cb();
- 			return matches;
- 		}
-
- 		this.detectPage = function() {
- 			var location = window.location.hash;
-
- 			switch(location) {
- 				case '' :
- 					// history.pushState(null, null, null);
- 					break
- 			}
- 		}
-
- 		this.setUpFooterLinks = function() {
+ 		// Binds Footer Links Events
+ 		this.bindFooterLinks = function() {
 			that.$footer.find('#footer_tickets').on('click', that.showUnavaliable);
 			that.$footer.find('#footer_settings').on('click', that.showUnavaliable);
 		};
 
+		// UnBinds Footer Links Events
+ 		this.bindFooterLinks = function() {
+			that.$footer.find('#footer_tickets').unbind('click', that.showUnavaliable);
+			that.$footer.find('#footer_settings').unbind('click', that.showUnavaliable);
+		};
+		
+		// Displays Unavaliable Screen
 		this.showUnavaliable = function() {
 			if(that.unavaliableVisible) return;
 
@@ -72,25 +83,7 @@
 				that.unavaliableVisible = false;
 			});
 		};
-
- 		this.init = function() 
-	 	{	
-			var preloader = new Preloader();
-			preloader.onComplete(function() {
-				TM.to($('#main'), 0.5, { opacity: 1 });
-			});	
-
-			// On Complete;
-			that.search = new Search();
-		 	that.search.init();
-
-		 	that.home = new Home();
-		 	that.home.init();
-		 	
-		 	that.setUpFooterLinks();
-		}
-
- 	}
+ 	};
 
  	/**
  	 * Preloader
@@ -271,36 +264,30 @@
 
 		this.bindEvents = function() {
 			// Show Search
-			this.$search
-				.on('click', that.showSearch);
+			this.$search.on('click', that.showSearch);
 
 			// Hide Search
-			this.$cancel
-				.on('click', that.hideSearch);
+			this.$cancel.on('click', that.hideSearch);
 
 			// Clear Search
-			this.$clear
-				.on('click', that.clearSearch);
+			this.$clear.on('click', that.clearSearch);
 
 			// Filter Results
-			this.$searchbox
-				.on('keyup', that.filterResults);
+			this.$searchbox.on('keyup', that.filterResults);
 
 			// Go Back
-			this.$backBtn
-				.on('click', that.goBack);
+			this.$backBtn.on('click', that.goBack);
 
-			
-			this.$footer
-				.find("#footer_home")
-					.on('click', function() {
-						if(that.$backBtn.position().left > 0) that.goHome();
-					});
+			// Goes Home
+			this.$footer.find("#footer_home")
+				.on('click', function() {
+					if(that.$backBtn.position().left > 0) that.goHome();
+				});
 
-			this.$footer
-				.find("#footer_search")
-					.on('click', that.showSearch);
+			// Displays Search
+			this.$footer.find("#footer_search").on('click', that.showSearch);
 
+			// Displays Post
 			this.searchPage.find('.result').on('click', that.showPost);
 		};
 
