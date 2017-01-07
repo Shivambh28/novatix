@@ -1,9 +1,15 @@
 import React from "react";
 
+import HomeSlider from "../components/Home/Slider/Slider";
+import HappeningToday from "../components/Home/HappeningToday/HappeningToday";
+
 export default class Home extends React.Component {
   render() {
     return (
-      <h1>Home</h1>
+      <div class="page" id="home">
+        <HomeSlider />
+        <HappeningToday />
+      </div>
     );
   }
 }
